@@ -1,6 +1,7 @@
 <?php
 use PFBC\Form;
 use PFBC\Element;
+use PFBC\View;
 
 session_start();
 error_reporting(E_ALL);
@@ -13,191 +14,76 @@ if(isset($_POST["form"])) {
 }
 
 include("header.php");
-/*
-$version = file_get_contents("../version");
-*/
-?>
-<div class="page-header">
-	<h1>Form Elements</h1>
-</div>
 
-<p>PFBC has support for 32 form elements: Button, Captcha, Checkbox, Checksort, CKEditor, 
-Color, Country, Date, DateTimeLocal, DateTime, Email, File, Hidden, HTML, jQueryUIDate, Month,
-Number, Password, Phone, Radio, Range, Search, Select, Sort, State, Textarea, Textbox, Time,
-TinyMCE, Url, Week, YesNo.</p>
-
-<p><span class="label label-important">Important</span> In each of the example forms provided, you'll
-notice that the form's prevent property is set to an array containing "bootstrap" and "jQuery".  This prevents
-the css/js include files from being loaded a second time by PFBC as they're already being included in a header
-file.  If your system already includes jQuery or bootstrap, it's recommended that you edit the prevent
-property in PFBC/Form.php so you don't have to set it (the prevent property) each time you create a form.</p>
-
-<?php
-$options = array("Option #1", "Option #2", "Option #3");
-$form = new Form("form-elements");
-$form->configure(array(
-	"prevent" => array("bootstrap", "jQuery")
-));
-$form->addElement(new Element\Hidden("form", "form-elements"));
-$form->addElement(new Element\HTML('<legend>Standard</legend>'));
-$form->addElement(new Element\Textbox("Textbox:", "Textbox"));
-$form->addElement(new Element\Password("Password:", "Password"));
-$form->addElement(new Element\File("File:", "File"));
-$form->addElement(new Element\Textarea("Textarea:", "Textarea"));
-$form->addElement(new Element\Select("Select:", "Select", $options));
-$form->addElement(new Element\Radio("Radio Buttons:", "RadioButtons", $options));
-$form->addElement(new Element\Checkbox("Checkboxes:", "Checkboxes", $options));
-$form->addElement(new Element\HTML('<legend>HTML5</legend>'));
-$form->addElement(new Element\Phone("Phone:", "Phone"));
-$form->addElement(new Element\Search("Search:", "Search"));
-$form->addElement(new Element\Url("Url:", "Url"));
-$form->addElement(new Element\Email("Email:", "Email"));
-$form->addElement(new Element\Date("Date:", "Date"));
-$form->addElement(new Element\DateTime("DateTime:", "DateTime"));
-$form->addElement(new Element\DateTimeLocal("DateTime-Local:", "DateTimeLocal"));
-$form->addElement(new Element\Month("Month:", "Month"));
-$form->addElement(new Element\Week("Week:", "Week"));
-$form->addElement(new Element\Time("Time:", "Time"));
-$form->addElement(new Element\Number("Number:", "Number"));
-$form->addElement(new Element\Range("Range:", "Range"));
-$form->addElement(new Element\Color("Color:", "Color"));
-$form->addElement(new Element\HTML('<legend>jQuery UI</legend>'));
-$form->addElement(new Element\jQueryUIDate("Date:", "jQueryUIDate"));
-$form->addElement(new Element\Checksort("Checksort:", "Checksort", $options));
-$form->addElement(new Element\Sort("Sort:", "Sort", $options));
-$form->addElement(new Element\HTML('<legend>WYSIWYG Editor</legend>'));
-$form->addElement(new Element\TinyMCE("TinyMCE:", "TinyMCE"));
-$form->addElement(new Element\CKEditor("CKEditor:", "CKEditor"));
-$form->addElement(new Element\HTML('<legend>Custom/Other</legend>'));
-$form->addElement(new Element\State("State:", "State"));
-$form->addElement(new Element\Country("Country:", "Country"));
-$form->addElement(new Element\YesNo("Yes/No:", "YesNo"));
-$form->addElement(new Element\Captcha("Captcha:"));
-$form->addElement(new Element\Button);
-$form->addElement(new Element\Button("Cancel", "button", array(
-	"onclick" => "history.go(-1);"
-)));
-$form->render();
 ?>
 
-<ul class="nav nav-tabs">
-	<li class="active"><a href="#php53" data-toggle="tab">PFBC <?php echo $version; ?> (PHP 5 >= 5.3.0)</a></li>
-	<li><a href="#php5" data-toggle="tab">PFBC <?php echo $version; ?> (PHP 5)</a></li>
-</ul>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span9">
+			<div class="page-header">
+				<h1>Problem</h1>
+			</div>
 
-<div class="tab-content">
-	<div id="php53" class="tab-pane active">
+		    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et 
+			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
+			Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et 
+			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
+			Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            
 
-<?php
-prettyprint('<?php
-use PFBC\Form;
-use PFBC\Element;
+			<br/>
+			<ul class="nav nav-tabs">
+  				<li class="active"><a href="#">Edit</a></li>
+  				<li class=""><a href="#">New</a></li>
+			</ul>
 
-$options = array("Option #1", "Option #2", "Option #3");
+			<?php
+			$ursachen = array("Ursache #1", "Ursache #2", "Ursache #3");
+			$ziele = array("Ziel #1", "Ziel #2", "Ziel #3");
 
-include("PFBC/Form.php");
-$form = new Form("form-elements");
-$form->configure(array(
-	"prevent" => array("bootstrap", "jQuery")
-));
-$form->addElement(new Element\Hidden("form", "form-elements"));
-$form->addElement(new Element\HTML(\'<legend>Standard</legend>\'));
-$form->addElement(new Element\Textbox("Textbox:", "Textbox"));
-$form->addElement(new Element\Password("Password:", "Password"));
-$form->addElement(new Element\File("File:", "File"));
-$form->addElement(new Element\Textarea("Textarea:", "Textarea"));
-$form->addElement(new Element\Select("Select:", "Select", $options));
-$form->addElement(new Element\Radio("Radio Buttons:", "RadioButtons", $options));
-$form->addElement(new Element\Checkbox("Checkboxes:", "Checkboxes", $options));
-$form->addElement(new Element\HTML(\'<legend>HTML5</legend>\'));
-$form->addElement(new Element\Phone("Phone:", "Phone"));
-$form->addElement(new Element\Search("Search:", "Search"));
-$form->addElement(new Element\Url("Url:", "Url"));
-$form->addElement(new Element\Email("Email:", "Email"));
-$form->addElement(new Element\Date("Date:", "Date"));
-$form->addElement(new Element\DateTime("DateTime:", "DateTime"));
-$form->addElement(new Element\DateTimeLocal("DateTime-Local:", "DateTimeLocal"));
-$form->addElement(new Element\Month("Month:", "Month"));
-$form->addElement(new Element\Week("Week:", "Week"));
-$form->addElement(new Element\Time("Time:", "Time"));
-$form->addElement(new Element\Number("Number:", "Number"));
-$form->addElement(new Element\Range("Range:", "Range"));
-$form->addElement(new Element\Color("Color:", "Color"));
-$form->addElement(new Element\HTML(\'<legend>jQuery UI</legend>\'));
-$form->addElement(new Element\jQueryUIDate("Date:", "jQueryUIDate"));
-$form->addElement(new Element\Checksort("Checksort:", "Checksort", $options));
-$form->addElement(new Element\Sort("Sort:", "Sort", $options));
-$form->addElement(new Element\HTML(\'<legend>WYSIWYG Editor</legend>\'));
-$form->addElement(new Element\TinyMCE("TinyMCE:", "TinyMCE"));
-$form->addElement(new Element\CKEditor("CKEditor:", "CKEditor"));
-$form->addElement(new Element\HTML(\'<legend>Custom/Other</legend>\'));
-$form->addElement(new Element\State("State:", "State"));
-$form->addElement(new Element\Country("Country:", "Country"));
-$form->addElement(new Element\YesNo("Yes/No:", "YesNo"));
-$form->addElement(new Element\Captcha("Captcha:"));
-$form->addElement(new Element\Button);
-$form->addElement(new Element\Button("Cancel", "button", array(
-	"onclick" => "history.go(-1);"
-)));
-$form->render();');
-?>
+			$form = new Form("vertical");
 
-	</div>
-	<div id="php5" class="tab-pane">
+			$form->configure(array(
+				"prevent" => array("bootstrap", "jQuery", "focus"),
+			    "view" => new View\Vertical,
+			    "labelToPlaceholder" => 0
+			));
 
-<?php
-prettyprint('<?php
-$options = array("Option #1", "Option #2", "Option #3");
+			$form->addElement(new Element\Hidden("form", "vertical"));
+			$form->addElement(new Element\HTML('<br/>'));
 
-include("PFBC/Form.php");
-$form = new Form("form-elements");
-$form->configure(array(
-	"prevent" => array("bootstrap", "jQuery")
-));
-$form->addElement(new Element_Hidden("form", "form-elements"));
-$form->addElement(new Element_HTML(\'<legend>Standard</legend>\'));
-$form->addElement(new Element_Textbox("Textbox:", "Textbox"));
-$form->addElement(new Element_Password("Password:", "Password"));
-$form->addElement(new Element_File("File:", "File"));
-$form->addElement(new Element_Textarea("Textarea:", "Textarea"));
-$form->addElement(new Element_Select("Select:", "Select", $options));
-$form->addElement(new Element_Radio("Radio Buttons:", "RadioButtons", $options));
-$form->addElement(new Element_Checkbox("Checkboxes:", "Checkboxes", $options));
-$form->addElement(new Element_HTML(\'<legend>HTML5</legend>\'));
-$form->addElement(new Element_Phone("Phone:", "Phone"));
-$form->addElement(new Element_Search("Search:", "Search"));
-$form->addElement(new Element_Url("Url:", "Url"));
-$form->addElement(new Element_Email("Email:", "Email"));
-$form->addElement(new Element_Date("Date:", "Date"));
-$form->addElement(new Element_DateTime("DateTime:", "DateTime"));
-$form->addElement(new Element_DateTimeLocal("DateTime-Local:", "DateTimeLocal"));
-$form->addElement(new Element_Month("Month:", "Month"));
-$form->addElement(new Element_Week("Week:", "Week"));
-$form->addElement(new Element_Time("Time:", "Time"));
-$form->addElement(new Element_Number("Number:", "Number"));
-$form->addElement(new Element_Range("Range:", "Range"));
-$form->addElement(new Element_Color("Color:", "Color"));
-$form->addElement(new Element_HTML(\'<legend>jQuery UI</legend>\'));
-$form->addElement(new Element_jQueryUIDate("Date:", "jQueryUIDate"));
-$form->addElement(new Element_Checksort("Checksort:", "Checksort", $options));
-$form->addElement(new Element_Sort("Sort:", "Sort", $options));
-$form->addElement(new Element_HTML(\'<legend>WYSIWYG Editor</legend>\'));
-$form->addElement(new Element_TinyMCE("TinyMCE:", "TinyMCE"));
-$form->addElement(new Element_CKEditor("CKEditor:", "CKEditor"));
-$form->addElement(new Element_HTML(\'<legend>Custom/Other</legend>\'));
-$form->addElement(new Element_State("State:", "State"));
-$form->addElement(new Element_Country("Country:", "Country"));
-$form->addElement(new Element_YesNo("Yes/No:", "YesNo"));
-$form->addElement(new Element_Captcha("Captcha:"));
-$form->addElement(new Element_Button);
-$form->addElement(new Element_Button("Cancel", "button", array(
-	"onclick" => "history.go(-1);"
-)));
-$form->render();');
-?>
+			$form->addElement(new Element\CKEditor("", "CKEditor"));
 
-	</div>
-</div>
+            $form->addElement(new Element\HTML('<br/>'));
+			$form->addElement(new Element\HTML('<legend>Beziehung hinzufügen</legend>'));
+			$form->addElement(new Element\Select("verstärkt durch Ursache:", "Select", $ursachen));
+
+			$form->addElement(new Element\Select("adressiert durch Ziel:", "Select", $ziele));
+
+			$form->addElement(new Element\Button);
+			$form->addElement(new Element\Button("Cancel", "button", array(
+				"onclick" => "history.go(-1);"
+			)));
+			$form->render();
+			?>
+
+		</div> <!-- span9 -->
+		<div class="span3">
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">verstärkt durch Ursachen</li>
+					<li><a href="./ursache.php">Ursache #10</a></li>
+					<li><a href="./ursache.php">Ursache #12</a></li>
+					<li><a href="./ursache.php">Ursache #20</a></li>
+					<li class="nav-header">adressiert durch Ziel</li>
+					<li><a href="./ziel.php">Ziel #11</a></li>
+					<li><a href="./ziel.php">Ziel #18</a></li>
+					<li><a href="./ziel.php">Ziel #19</a></li>
+				</ul>
+			</div>
+		</div>	
+</div> <!-- row-fluid -->
 
 <?php
-include("../footer.php");
+include("footer.php");

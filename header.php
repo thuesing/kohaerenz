@@ -35,7 +35,12 @@ function prettyprint($code) {
 			.sidebar-nav {
 				padding: 9px 0;
 			}
-		</style>
+
+			ul.nav.nav-tabs {
+				margin: -1px !important;
+			}
+
+    	</style>
 		<link href="<?php echo $pathPrefix; ?>PFBC/Resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="<?php echo $pathPrefix; ?>prettify/prettify.css" rel="stylesheet">
 
@@ -64,38 +69,43 @@ function prettyprint($code) {
 			</div>
 		</div>
 -->
+
+<?php
+$script = basename($_SERVER["PHP_SELF"]);
+?>
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
 
-          <a class="brand" href="./index.php">Kohärenzwiki</a>
+          <a class="brand" href="#">Kohärenzwiki</a>
+
+
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="./index.html">Home</a>
-              </li>
-              <li class="">
+    
+            <ul class="nav pull-right">
+              <li <?php if($script == "thema.php") echo ' class="active"';?>>
                 <a href="./thema.php">Thema</a>
               </li>
-              <li class="active">
+              <li <?php if($script == "problem.php") echo ' class="active"';?>>
                 <a href="./problem.php">Problem</a>
               </li>
-              <li class="">
+              <li <?php if($script == "ursache.php") echo ' class="active"';?>>
                 <a href="./ursache.php">Ursache</a>
               </li>
-              <li class="">
+              <li <?php if($script == "ziel.php") echo ' class="active"';?>>
                 <a href="./ziel.php">Ziel</a>
               </li>
-              <li class="">
+              <li <?php if($script == "sektor.php") echo ' class="active"';?>>
                 <a href="./sektor.php">Sektor</a>
               </li>
-              <li class="">
+              <li <?php if($script == "verhalten.php") echo ' class="active"';?>>
                 <a href="./verhalten.php">Verhalten</a>
               </li>
-               <li class="">
+               <li <?php if($script == "massnahme.php") echo ' class="active"';?>>
                 <a href="./massnahme.php">Massnahme</a>
               </li>             
             </ul>
+ 
           </div>
         </div>
       </div>
@@ -103,25 +113,4 @@ function prettyprint($code) {
 
 
 
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span3">
-					<div class="well sidebar-nav">
-						<ul class="nav nav-list">
-							<li><a href="<?php echo $pathPrefix; ?>index.php#whats-new-in-3x">What's New in 3.x</a></li>
-							<li><a href="<?php echo $pathPrefix; ?>index.php#getting-started">Getting Started</a></li>
-							<li><a href="http://groups.google.com/group/php-form-builder-class/">Mailing List</a></li>
-							<li><a href="http://code.google.com/p/php-form-builder-class/issues/list">Bug Tracker</a></li>
-							<li class="nav-header">Examples</li>
-							<?php
-							$script = basename($_SERVER["PHP_SELF"]);
-							?>
-							<li<?php if($script == "form-elements.php") echo ' class="active"';?>><a href="<?php echo $examplePathPrefix; ?>form-elements.php">Form Elements</a></li>
-							<li<?php if($script == "html5.php") echo ' class="active"';?>><a href="<?php echo $examplePathPrefix; ?>html5.php">HTML5</a></li>
-							<li<?php if($script == "views.php") echo ' class="active"';?>><a href="<?php echo $examplePathPrefix; ?>views.php">Views</a></li>
-							<li<?php if($script == "validation.php") echo ' class="active"';?>><a href="<?php echo $examplePathPrefix; ?>validation.php">Validation</a></li>
-							<li<?php if($script == "ajax.php") echo ' class="active"';?>><a href="<?php echo $examplePathPrefix; ?>ajax.php">Ajax</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="span9">
+
